@@ -192,11 +192,6 @@ public class Main
         Texture tijoloTex = assetManager.loadTexture("Textures/" + texture); 
         boxMat.setTexture("ColorMap", tijoloTex); 
         
-        /*
-        boxMat.setBoolean("UseMaterialColors", true);
-        boxMat.setColor("Ambient", ColorRGBA.Green);
-        boxMat.setColor("Diffuse", ColorRGBA.Green);
-        */
         
         boxGeo.setMaterial(boxMat);
         
@@ -245,55 +240,5 @@ public class Main
             }
             
         }
-        
-        /*
-        if(event.getNodeA().getName().equals("player") || 
-           event.getNodeB().getName().equals("player")){
-        
-            if(event.getNodeA().getName().equals("Box")){
-                  Spatial s = event.getNodeA();
-                  Geometry teste = (Geometry)s;
-                  s.setMaterial(boxMatColosion);
-            }
-            else
-            if(event.getNodeB().getName().equals("Box")){
-                  Spatial s = event.getNodeB();
-                  s.setMaterial(boxMatColosion);
-            }
-            
-        }
-        */
     }
-    
-    /*
-    private Box RecuperaMenorCubo(){
-        
-        float tamanhoMaximo = -1;
-        float tamanhoBox = -1;
-        Geometry aux = null;
-        
-        for(Geometry g : listGeometry){
-            
-            tamanhoBox = g.;
-            
-            if(tamanhoBox < tamanhoMaximo)
-            {
-                tamanhoMaximo = tamanhoBox;
-                aux = box;
-            }
-        }    
-        
-        return aux;
-    }
-    */
-    
-    /*
-    private Boolean ComparaCubo(Box box1, Box box2){
-        if(box1.xExtent == box2.xExtent  && 
-                box1.yExtent == box2.yExtent  && 
-                box1.zExtent == box2.zExtent)
-            return true;
-        return false;
-    }
-    */
 }
