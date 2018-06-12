@@ -1,1 +1,0 @@
-mygame.cameranode.PlayerCameraNode

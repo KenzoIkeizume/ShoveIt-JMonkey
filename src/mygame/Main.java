@@ -66,23 +66,23 @@ public class Main
                 int resul = mat[i][j];
                 
                 if(resul == 0)                {
-                    createCubo(i*2,j*2,"Preto.jpg",true, 0);
+                    createCubo(i*2,j*2,"Preto.jpg",true, 0, "ground");
+                }
+                else if(resul == 4){
+                    createCubo(i*2,j*2,"box-win.png",true, 0, "box-win");
                 }
                 else{
                     // 1
-                    createCubo(i*2,j*2,"Carpete.jpg",true, 0);
+                    createCubo(i*2,j*2,"Carpete.jpg",true, 0, "normal");
                     
                     if(resul == 2){
-                        createCubo(i*2,j*2,"Tijolo.jpg",false, 0);
+                        createCubo(i*2,j*2,"Tijolo.jpg",false, 0, "tijolo");
                     }
                     else if(resul == 3){
                         createPlayer(i,j);
                     }
-                    else if(resul == 4){
-                        
-                    }
                     else if(resul == 5){
-                        createCubo(i*2,j*2,"Caixa.jpg",false, 0.005f);
+                        createCubo(i*2,j*2,"Caixa.jpg",false, 10f, "caixa");
                     }
                 }  
             }
@@ -103,7 +103,6 @@ public class Main
     public void simpleUpdate(float tpf) {
 
         player.upDateKeys(tpf, up, down, left, right);
-
     }
 
     @Override
@@ -157,7 +156,7 @@ public class Main
     }
 
     private void createLigth() {
-
+        
         DirectionalLight l1 = new DirectionalLight();
         l1.setDirection(new Vector3f(1, -0.7f, 0));
         rootNode.addLight(l1);
@@ -182,11 +181,11 @@ public class Main
 
     }
 
-    private Geometry createCubo(float x, float z, String texture, boolean ground, float rigidbody) {
+    private Geometry createCubo(float x, float z, String texture, boolean ground, float rigidbody, String name) {
         /* A colored lit cube. Needs light source! */        
         
         Box boxMesh = new Box(1f, 1f, 1f);
-        Geometry boxGeo = new Geometry("Box", boxMesh);
+        Geometry boxGeo = new Geometry(name, boxMesh);
         //Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
         
         Material boxMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md"); 
@@ -212,7 +211,7 @@ public class Main
         bulletAppState.getPhysicsSpace().add(boxPhysicsNode);
         
         return boxGeo;
-
+ 
     }
 
     private void initKeys() {
@@ -232,15 +231,15 @@ public class Main
         
         //Muda a cor do cubo ao ser clicado
         
-        if(event.getNodeA().getName().equals("player") || 
-           event.getNodeB().getName().equals("player")){
+        if(event.getNodeA().getName().equals("box-win") || 
+           event.getNodeB().getName().equals("box-win")){
 
-            if(event.getNodeA().getName().equals("BoxWin")){
+            if(event.getNodeA().getName().equals("caixa")){
                   Spatial s = event.getNodeA();
                   s.setMaterial(boxMatColosion);
             }
             else
-            if(event.getNodeB().getName().equals("BoxWin")){
+            if(event.getNodeB().getName().equals("caixar")){
                   Spatial s = event.getNodeB();
                   s.setMaterial(boxMatColosion);
             }

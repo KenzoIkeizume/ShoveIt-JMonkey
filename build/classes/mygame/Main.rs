@@ -1,2 +1,0 @@
-mygame.cameranode.Exemplo10BetterComPlayerCameraNode
-mygame.cameranode.Main

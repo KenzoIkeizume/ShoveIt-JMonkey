@@ -113,12 +113,14 @@ public class PlayerCameraNode extends Node {
         } else if (down) {
             walkDirection.addLocal(camDir.mult(2).negate());
         }
-
+        
+        float angle = FastMath.PI * tpf;
+        
         if (left) {
-            Quaternion rotateL = new Quaternion().fromAngleAxis(FastMath.PI * tpf, Vector3f.UNIT_Y);
+            Quaternion rotateL = new Quaternion().fromAngleAxis(angle, Vector3f.UNIT_Y);
             rotateL.multLocal(viewDirection);
         } else if (right) {
-            Quaternion rotateR = new Quaternion().fromAngleAxis(-FastMath.PI * tpf, Vector3f.UNIT_Y);
+            Quaternion rotateR = new Quaternion().fromAngleAxis(-angle, Vector3f.UNIT_Y);
             rotateR.multLocal(viewDirection);
         }
         
